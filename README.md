@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # STM32F407 EtherCAT Master - KaiserDrive 电机控制系统
 
 基于STM32F407VET6开发板和SOEM(Simple Open EtherCAT Master)库的EtherCAT主站系统，用于控制KaiserDrive KDE-ECAT系列伺服电机。
@@ -440,3 +441,6 @@ ec_slave[i].inputs = &ec_IOmap[32];     // 输入数据: 32-49
 
 ---
 **注意**：使用本系统前请确保已充分了解EtherCAT和伺服电机的安全操作规程。
+=======
+# STM32F407_SOEM_Master
+>>>>>>> df4d9abbf5283df96bc55e05f92bb6196bf974bb
