@@ -1,0 +1,302 @@
+zterch@zterch-TM1701:~/VS_Project/Gene_EthCtl_Bd/sysEthPrj_Gene/build$ sudo ./leader/leader 
+[sudo] zterch 的密码： 
+========================================
+ EtherCAT 6轴主站控制程序 (稳定版)
+ 支持轴数: 6
+========================================
+[master] 状态上报 socket 已创建
+[master] 等待上位机命令...
+[master] 收到命令: 102, sender=0
+[master] 收到 LINK 命令
+[master] 上位机地址: 127.0.0.1:33334
+[master] 收到命令: 105, sender=0
+[master] 收到命令: 创建主站
+[master] 初始化 EtherCAT 主站 (轴数 6)...
+[master] 主站初始化完成
+[master] 收到命令: 109, sender=0
+[master] 收到命令: 配置 PDO
+[master] 配置 PDO...
+[master] 轴0 Pn31 SDO 请求创建成功 (0x2031:0)
+[master] 轴0 Pn32 SDO 请求创建成功 (0x2032:0)
+[master] 轴0 Pn33 SDO 请求创建成功 (0x2033:0)
+[master] 轴0 Pn34 SDO 请求创建成功 (0x2034:0)
+[master] 轴0 Pn63 SDO 请求创建成功 (0x2063:0)
+[master] 轴0 Pn64 SDO 请求创建成功 (0x2064:0)
+[master] 轴0 Pn65 SDO 请求创建成功 (0x2065:0)
+[master] 轴0 保存 SDO 请求创建成功
+[master] 轴1 Pn31 SDO 请求创建成功 (0x2031:0)
+[master] 轴1 Pn32 SDO 请求创建成功 (0x2032:0)
+[master] 轴1 Pn33 SDO 请求创建成功 (0x2033:0)
+[master] 轴1 Pn34 SDO 请求创建成功 (0x2034:0)
+[master] 轴1 Pn63 SDO 请求创建成功 (0x2063:0)
+[master] 轴1 Pn64 SDO 请求创建成功 (0x2064:0)
+[master] 轴1 Pn65 SDO 请求创建成功 (0x2065:0)
+[master] 轴1 保存 SDO 请求创建成功
+[master] 轴2 Pn31 SDO 请求创建成功 (0x2031:0)
+[master] 轴2 Pn32 SDO 请求创建成功 (0x2032:0)
+[master] 轴2 Pn33 SDO 请求创建成功 (0x2033:0)
+[master] 轴2 Pn34 SDO 请求创建成功 (0x2034:0)
+[master] 轴2 Pn63 SDO 请求创建成功 (0x2063:0)
+[master] 轴2 Pn64 SDO 请求创建成功 (0x2064:0)
+[master] 轴2 Pn65 SDO 请求创建成功 (0x2065:0)
+[master] 轴2 保存 SDO 请求创建成功
+[master] 轴3 Pn31 SDO 请求创建成功 (0x2031:0)
+[master] 轴3 Pn32 SDO 请求创建成功 (0x2032:0)
+[master] 轴3 Pn33 SDO 请求创建成功 (0x2033:0)
+[master] 轴3 Pn34 SDO 请求创建成功 (0x2034:0)
+[master] 轴3 Pn63 SDO 请求创建成功 (0x2063:0)
+[master] 轴3 Pn64 SDO 请求创建成功 (0x2064:0)
+[master] 轴3 Pn65 SDO 请求创建成功 (0x2065:0)
+[master] 轴3 保存 SDO 请求创建成功
+[master] 轴4 Pn31 SDO 请求创建成功 (0x2031:0)
+[master] 轴4 Pn32 SDO 请求创建成功 (0x2032:0)
+[master] 轴4 Pn33 SDO 请求创建成功 (0x2033:0)
+[master] 轴4 Pn34 SDO 请求创建成功 (0x2034:0)
+[master] 轴4 Pn63 SDO 请求创建成功 (0x2063:0)
+[master] 轴4 Pn64 SDO 请求创建成功 (0x2064:0)
+[master] 轴4 Pn65 SDO 请求创建成功 (0x2065:0)
+[master] 轴4 保存 SDO 请求创建成功
+[master] 轴5 Pn31 SDO 请求创建成功 (0x2031:0)
+[master] 轴5 Pn32 SDO 请求创建成功 (0x2032:0)
+[master] 轴5 Pn33 SDO 请求创建成功 (0x2033:0)
+[master] 轴5 Pn34 SDO 请求创建成功 (0x2034:0)
+[master] 轴5 Pn63 SDO 请求创建成功 (0x2063:0)
+[master] 轴5 Pn64 SDO 请求创建成功 (0x2064:0)
+[master] 轴5 Pn65 SDO 请求创建成功 (0x2065:0)
+[master] 轴5 保存 SDO 请求创建成功
+[master] PDO 配置完成
+[master] 收到命令: 110, sender=0
+[master] 收到命令: 激活主站
+[master] 配置 DC 时钟同步...
+[master] DC 配置完成
+[master] 激活主站...
+[master] 轴0 初始位置: 0 counts (0.00°)
+[master] 轴1 初始位置: 0 counts (0.00°)
+[master] 轴2 初始位置: 0 counts (0.00°)
+[master] 轴3 初始位置: 0 counts (0.00°)
+[master] 轴4 初始位置: 0 counts (0.00°)
+[master] 轴5 初始位置: 0 counts (0.00°)
+[master] 等待 6 个从站就绪...
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0200
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0200
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0200
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0200
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0200
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴0: AL=0x02, 状态=Not Ready, 状态字=0x0200
+[master] 轴1: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴2: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴3: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴4: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 轴5: AL=0x02, 状态=Not Ready, 状态字=0x0000
+[master] 主站激活完成
+[master] 主站激活完成
+[master] 状态: AL=0x02, 周期=0
+  轴0: Not Ready, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 状态: AL=0x02, 周期=5000
+  轴0: Not Ready, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 状态: AL=0x08, 周期=10000
+  轴0: Not Ready, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 轴0 状态: Not Ready -> Switch On Disabled (0x0250, 错误码: 0x0000)
+[master] 状态: AL=0x08, 周期=15000
+  轴0: Switch On Disabled, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 状态: AL=0x08, 周期=20000
+  轴0: Switch On Disabled, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 状态: AL=0x08, 周期=25000
+  轴0: Switch On Disabled, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 状态: AL=0x08, 周期=30000
+  轴0: Switch On Disabled, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 轴0 状态: Switch On Disabled -> Not Ready (0x0000, 错误码: 0x0000)
+[master] 轴0 状态: Not Ready -> Switch On Disabled (0x0250, 错误码: 0x0000)
+[master] 状态: AL=0x08, 周期=35000
+  轴0: Switch On Disabled, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 收到命令: 114, sender=0
+[master] 收到 CMD_IGH_FSA_SHUTDOWN, 轴掩码: 0x01
+[master]  -> 控制轴0 Shutdown
+[master] 轴0 状态: Switch On Disabled -> Ready to Switch On (0x0231, 错误码: 0x0000)
+[master] 状态: AL=0x08, 周期=40000
+  轴0: Ready to Switch On, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 收到命令: 115, sender=0
+[master] 收到 CMD_IGH_FSA_SWITCH_ON, 轴掩码: 0x01
+[master] 轴0 状态: Ready to Switch On -> Switched On (0x0233, 错误码: 0x0000)
+[master] 状态: AL=0x08, 周期=45000
+  轴0: Switched On, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 轴0 状态: Switched On -> Not Ready (0x0000, 错误码: 0x0000)
+[master] 收到命令: 116, sender=0
+[master] 收到 CMD_IGH_FSA_ENOP, 轴掩码: 0x01
+[master] 轴0 错误: 当前状态不是 Switched On
+[master] 轴0 状态: Not Ready -> Switched On (0x0233, 错误码: 0x0000)
+[master] 状态: AL=0x08, 周期=50000
+  轴0: Switched On, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 收到命令: 118, sender=0
+[master] 收到 CMD_IGH_CLEAR_ERROR, 轴掩码: 0x3F
+[master] 状态: AL=0x08, 周期=55000
+  轴0: Switched On, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 轴0 状态: Switched On -> Not Ready (0x0000, 错误码: 0x0000)
+[master] 轴0 状态: Not Ready -> Switched On (0x0233, 错误码: 0x0000)
+[master] 状态: AL=0x08, 周期=60000
+  轴0: Switched On, 实际=8.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 收到命令: 116, sender=0
+[master] 收到 CMD_IGH_FSA_ENOP, 轴掩码: 0x01
+[master] 轴0 准备进入 OP 状态...
+[master] 轴0 状态: Switched On -> Operation Enabled (0x0237, 错误码: 0x0000)
+[master] 轴0 进入 Operation Enabled
+[master] 收到命令: 111, sender=0
+[master] 轴0 CSV 速度: 10.000 deg/s
+[master] 状态: AL=0x08, 周期=65000
+  轴0: Operation Enabled, 实际=40.33°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 收到命令: 111, sender=0
+[master] 轴0 CSV 速度: 0.000 deg/s
+[master] 收到命令: 111, sender=0
+[master] 轴0 CSV 速度: -10.000 deg/s
+[master] 收到命令: 111, sender=0
+[master] 轴0 CSV 速度: 0.000 deg/s
+[master] 收到命令: 113, sender=0
+[master] 轴0 绝对位置: 当前实际 28.266° -> 目标实际 0.000°
+[master] 轴0 启动 PD 位置环: 实际 28.27° -> 实际 0.00°
+[master] 状态: AL=0x08, 周期=70000
+  轴0: Operation Enabled, 实际=-1.28°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 状态: AL=0x08, 周期=75000
+  轴0: Operation Enabled, 实际=0.07°
+  轴1: Not Ready, 实际=-17.13°
+  轴2: Not Ready, 实际=39.14°
+  轴3: Not Ready, 实际=47.10°
+  轴4: Not Ready, 实际=-24.27°
+  轴5: Not Ready, 实际=57.86°
+[master] 收到命令: 117, sender=0
+[master] 收到 CMD_IGH_FSA_HALT, 轴掩码: 0x01
+[master] 轴0 状态: Operation Enabled -> Switch On Disabled (0x0250, 错误码: 0x0000)
+[master] 收到命令: 119, sender=0
+[master] 收到命令: 销毁主站
+[master] 清理主站资源...
+[master] 清理完成
+^C
+[master] 收到信号 2, 正在停止...
+[master] 正在退出...
+[master] 清理主站资源...
+[master] 清理完成
+[master] 已退出
+leader quit

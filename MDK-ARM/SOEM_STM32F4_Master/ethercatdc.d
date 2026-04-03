@@ -1,0 +1,10 @@
+soem_stm32f4_master\ethercatdc.o: ../SOEM/soem/ethercatdc.c
+soem_stm32f4_master\ethercatdc.o: ../SOEM/soem/ethercatdc.h
+soem_stm32f4_master\ethercatdc.o: ../SOEM/soem/ethercatmain.h
+soem_stm32f4_master\ethercatdc.o: ../SOEM/soem/ethercattype.h
+soem_stm32f4_master\ethercatdc.o: ../SOEM/osal/osal.h
+soem_stm32f4_master\ethercatdc.o: ../SOEM/osal/osal_defs.h
+soem_stm32f4_master\ethercatdc.o: D:\EmbededSystem\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+soem_stm32f4_master\ethercatdc.o: D:\EmbededSystem\keil5\ARM\ARMCC\Bin\..\include\string.h
+soem_stm32f4_master\ethercatdc.o: ../SOEM/oshw/nicdrv.h
+soem_stm32f4_master\ethercatdc.o: ../SOEM/soem/ethercatbase.h
