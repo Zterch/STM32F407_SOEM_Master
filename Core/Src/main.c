@@ -901,35 +901,81 @@ int EtherCAT_Init(void)
     }
 
     // ============================================================
-    // TEST: Disable DC sync, use Free Run mode to verify basic PDO communication
-    // If Free Run works, then issue is with DC/SYNC0 configuration
+    // CRITICAL: Enable DC sync mode (DC-Synchronous mode)
+    // KaiserDrive requires DC sync mode to enter Operation Enabled
+    // 
+    // CRITICAL FIX: SYNC0 must be configured with correct DC start time
+    // DCSTART0 = current_DC_time + shift + margin (not just shift)
     // ============================================================
-    UART_SendLine("TEST: Using Free Run mode (DC sync disabled)...");
+    UART_SendLine("Enabling DC sync (DC-Synchronous mode)...");
     for (i = 1; i <= ec_slave_count; i++) {
         uint16_t configadr = ec_slave[i].configadr;
 
-        // Set AssignActivate to 0x0000 (Free Run mode)
-        uint16_t assign_activate = 0x0000;
+        // Set AssignActivate to 0x0300 (DC-Synchronous mode, like IGH)
+        uint16_t assign_activate = 0x0300;
         int wkc_aa = ecx_FPWR(&ecx_port, configadr, ECT_REG_DCCUC, 2, &assign_activate, EC_TIMEOUTSAFE);
-        sprintf(buf, "  AssignActivate set to 0x%04X (Free Run, wkc=%d)", assign_activate, wkc_aa);
+        sprintf(buf, "  AssignActivate set to 0x%04X (DC-Sync, wkc=%d)", assign_activate, wkc_aa);
         UART_SendLine(buf);
         
-        // Ensure SYNC0 is deactivated
+        // CRITICAL: Manually configure SYNC0 with correct DC timing
+        // ecx_dcsync0 writes shift to DCSTART0, but it should be (current_DC_time + shift)
+        UART_SendLine("  Configuring SYNC0 with correct DC timing...");
+        
+        // Step 1: Deactivate SYNC0 first
         uint8_t dc_act = 0;
         ecx_FPWR(&ecx_port, configadr, ECT_REG_DCSYNCACT, 1, &dc_act, EC_TIMEOUTSAFE);
         
+        // Step 2: Read current DC system time from slave
+        uint64_t dc_current_time = 0;
+        int wkc_dc = ecx_FPRD(&ecx_port, configadr, ECT_REG_DCSYSTIME, 8, &dc_current_time, EC_TIMEOUTSAFE);
+        if (wkc_dc > 0) {
+            // Convert from little-endian if needed (ET1100 returns little-endian)
+            dc_current_time = etohll(dc_current_time);
+            sprintf(buf, "  Current DC time: %llu ns", dc_current_time);
+            UART_SendLine(buf);
+        } else {
+            UART_SendLine("  Warning: Could not read DC time, using 0");
+            dc_current_time = 0;
+        }
+        
+        // Step 3: Set SYNC0 cycle time (2ms)
+        uint32_t cycle_time = DC_SYNC0_CYCLE_TIME;
+        ecx_FPWR(&ecx_port, configadr, ECT_REG_DCCYCLE0, 4, &cycle_time, EC_TIMEOUTSAFE);
+        
+        // Step 4: CRITICAL - Set SYNC0 start time to (current_DC_time + shift + margin)
+        // Add 10ms margin to ensure SYNC0 starts in the future
+        uint64_t start_time = dc_current_time + DC_SYNC0_SHIFT + 10000000; 
+        ecx_FPWR(&ecx_port, configadr, ECT_REG_DCSTART0, 8, &start_time, EC_TIMEOUTSAFE);
+        sprintf(buf, "  SYNC0 start time: %llu ns (DC+%llu ns)", start_time, DC_SYNC0_SHIFT + 10000000);
+        UART_SendLine(buf);
+        
+        // Step 5: Activate SYNC0
+        dc_act = 0x03;  // SYNC0 active, cyclic mode
+        ecx_FPWR(&ecx_port, configadr, ECT_REG_DCSYNCACT, 1, &dc_act, EC_TIMEOUTSAFE);
+        
         // Update slave DC state
-        ec_slave[i].DCactive = 0;
-        ec_slave[i].DCcycle = 0;
-        ec_slave[i].DCshift = 0;
+        ec_slave[i].DCactive = 1;
+        ec_slave[i].DCcycle = DC_SYNC0_CYCLE_TIME;
+        ec_slave[i].DCshift = DC_SYNC0_SHIFT;
+        
+        sprintf(buf, "  SYNC0 activated: cycle=%d ms, shift=%d ms", 
+                DC_SYNC0_CYCLE_TIME / 1000000, DC_SYNC0_SHIFT / 1000000);
+        UART_SendLine(buf);
     }
     
-    // Disable DC in group
-    ec_group[0].hasdc = FALSE;
-    ec_group[0].DCnext = 0;
-    UART_SendLine("  Free Run mode enabled (DC sync disabled)");
+    // Enable DC in group
+    ec_group[0].hasdc = TRUE;
+    ec_group[0].DCnext = 1;
+    UART_SendLine("  DC sync enabled (DC-Synchronous mode)");
     
-    // Short delay
+    // CRITICAL: Wait for SYNC0 to start (send some PDO frames)
+    UART_SendLine("  Waiting for SYNC0 to stabilize...");
+    for (int j = 0; j < 30; j++) {
+        ec_send_processdata();
+        ec_receive_processdata(EC_TIMEOUTRET);
+        HAL_Delay(2);
+    }
+    UART_SendLine("  DC/SYNC0 synchronized");
     HAL_Delay(50);
 
     // ============================================================
@@ -2075,6 +2121,38 @@ void Process_Command(void)
     else if (strcmp(cmd, "enableop") == 0)
     {
         // CiA 402: Enable Operation (transition to Operation Enabled)
+        // CRITICAL: Before entering Operation Enabled, sync target position to actual position
+        // to avoid following error fault (0x0131)
+        UART_SendLine("Enable Operation: Syncing target position to actual position...");
+        
+        // Read current actual position from input data
+        int32_t current_pos = 0;
+        if (ec_group[0].inputs && ec_group[0].Ibytes >= (target_pos_offset + 4)) {
+            memcpy(&current_pos, ec_group[0].inputs + (int)actual_pos_offset, sizeof(int32_t));
+            // Convert from encoder counts to degrees for display
+            float pos_deg = (float)current_pos / 10000.0f;
+            sprintf(buf, "  Current position: %ld counts (%.2f deg)", current_pos, pos_deg);
+            UART_SendLine(buf);
+        }
+        
+        // Set target position to current position to avoid following error
+        int32_t target_pos = current_pos;
+        memcpy((void *)(ec_group[0].outputs + (int)target_pos_offset), &target_pos, sizeof(int32_t));
+        sprintf(buf, "  Target position set to: %ld counts", target_pos);
+        UART_SendLine(buf);
+        
+        // Also set target velocity and torque to 0 for safety
+        int32_t zero32 = 0;
+        int16_t zero16 = 0;
+        memcpy((void *)(ec_group[0].outputs + (int)target_vel_offset), &zero32, sizeof(int32_t));
+        memcpy((void *)(ec_group[0].outputs + (int)target_tor_offset), &zero16, sizeof(int16_t));
+        UART_SendLine("  Target velocity and torque set to 0");
+        
+        // Send the updated PDO data before enabling operation
+        ec_send_processdata();
+        ec_receive_processdata(EC_TIMEOUTRET);
+        UART_SendLine("  PDO data updated");
+        
         manual_control = 1;
         manual_controlword = 0x000F;
         UART_SendLine("Enable Operation (0x000F) -> Operation Enabled");
